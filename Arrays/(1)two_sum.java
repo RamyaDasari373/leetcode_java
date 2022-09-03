@@ -38,3 +38,24 @@ class Solution {
         return index;
     }
 }
+
+//o(n) using hashmap
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        //use hashmap
+        int res[] = new int[2];
+        Map<Integer,Integer> hashmap = new HashMap<Integer,Integer>();
+        for(int i=0;i<nums.length;i++){
+            hashmap.put(nums[i],i);
+        }
+        
+        for(int i=0;i<nums.length;i++){
+            int numtobefind = target-nums[i];
+            if(hashmap.containsKey(numtobefind) && hashmap.get(numtobefind) != i){
+                res[0] = i;
+                res[1] = hashmap.get(numtobefind);                
+            }
+        }
+        return res;
+    }
+}
